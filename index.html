@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kalkulator modern</title>
+  </head>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffffff, #b3b3b3);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background-color: rgb(87, 87, 87);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgb(13, 236, 236);
+      width: 300px;
+    }
+    .calculator input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: right;
+      border: 2px solid #48fff0;
+      border-radius: 8px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .buttons button {
+      padding: 15px;
+      font-size: 1.2rem;
+      color: #48fff0;
+      border: none;
+      border-radius: 10px;
+      background-color: rgb(163, 163, 163);
+      transition: background-color 0.2s ease;
+      cursor: pointer;
+    }
+    .buttons button:hover {
+      background-color: rgb(54, 107, 112);
+    }
+    .buttons button.operator {
+      background-color: #48fff0;
+      color: white;
+    }
+    .buttons button.operator:hover {
+      background-color: #0370ff;
+    }
+    .buttons button.clear {
+      background-color: #0370ff;
+      color: #ffffff;
+    }
+    .buttons button.clear:hover {
+      background-color: #48fff0;
+    }
+    .buttons button.delete {
+      background-color: #0370ff;
+      color: white;
+    }
+    .buttons button.delete:hover {
+      background-color: #48fff0;
+    }
+    .buttons button.equal {
+      background-color: #48fff0;
+      color: white;
+      width: 440%;
+    }
+    .buttons button.equal:hover {
+      background-color: #0370ff;
+    }
+  </style>
+  <body>
+    <!-- <h1><strong>maulana azriel shfarino</strong></h1>
+    <h2>maulana</h2>
+    <p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, delectus neque. Voluptatum quidem illum doloremque blanditiis provident cumque doloribus eaque aspernatur, perspiciatis optio dicta velit voluptatibus, consequuntur dolor, commodi deserunt.</strong></p>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam non perferendis magni et facilis alias qui deserunt nisi inventore ipsa? Ipsa necessitatibus optio earum repellat molestiae veritatis deleniti enim cumque?</p>
+    <a href="1/data.html">pindah</a> -->
+    <div class="calculator">
+      <input type="text" id="display" disabled />
+      <div class="buttons">
+        <button onclick="press ('7')">7</button>
+        <button onclick="press ('8')">8</button>
+        <button onclick="press ('9')">9</button>
+        <button class="operator" onclick="press('/')">/</button>
+
+        <button onclick="press ('4')">4</button>
+        <button onclick="press ('5')">5</button>
+        <button onclick="press ('6')">6</button>
+        <button class="operator" onclick="press('*')">*</button>
+
+        <button onclick="press ('1')">1</button>
+        <button onclick="press ('2')">2</button>
+        <button onclick="press ('3')">3</button>
+        <button class="operator" onclick="press('-')">-</button>
+
+        <button onclick="press ('0')">0</button>
+        <button class="clear" onclick="cleardisplay()">c</button>
+        <button class="delete" onclick="deletes()">DEL</button>
+        <button class="operator" onclick="press('+')">+</button>
+
+        <button class="equal" onclick="calculate()">=</button>
+      </div>
+    </div>
+    <script>
+      const display = document.getElementById("display");
+
+      function press(value) {
+        display.value += value;
+      }
+
+      function cleardisplay() {
+        display.value = "";
+      }
+
+      function deletes() {
+        display.value = display.value.slice(0, -1);
+      }
+
+      function calculate() {
+        try {
+          display.value = eval(display.value);
+        } catch {
+          display.value = "error";
+        }
+      }
+
+      document.addEventListener("keydown", function (e) {
+        const key = e.key;
+
+        if (!isNaN(key)) {
+          press(key);
+        } else if (["+", "-", "*", "/"].includes(key)) {
+          press(key);
+        } else if (key === "enter") {
+          e.preventDefault();
+          calculate();
+        } else if (key === "Backspace") {
+          deletes();
+        } else if (key === "escape") {
+          cleardisplay();
+        }
+      });
+    </script>
+  </body>
+</html>
